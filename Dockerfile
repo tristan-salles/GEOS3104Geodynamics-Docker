@@ -20,7 +20,6 @@ RUN pip install Cython==0.20
 RUN pip install scipy
 RUN pip install numpy
 
-
 RUN mkdir /workspace
 
 # launch notebook
@@ -33,7 +32,7 @@ make clean && \
 make && \
 cp ellipsis3d /usr/local/bin
 
-COPY /build/GEOS3104Geodynamics/Exercises /workspace
+RUN mv /build/GEOS3104Geodynamics/Exercises /workspace
 
 ENV TINI_VERSION v0.8.4
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin/tini

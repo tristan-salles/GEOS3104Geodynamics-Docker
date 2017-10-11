@@ -14,11 +14,12 @@ RUN pip install -U setuptools
 RUN pip install -U pip  # fixes AssertionError in Ubuntu pip
 RUN pip install enum34
 RUN pip install Pillow
+RUN pip install six==1.10.0
 RUN pip install jupyter markupsafe zmq singledispatch backports_abc certifi jsonschema path.py matplotlib
-
 RUN pip install Cython==0.20
 RUN pip install scipy
 RUN pip install numpy
+RUN python -m pip install -U matplotlib
 
 RUN mkdir /workspace
 
@@ -32,7 +33,7 @@ make clean && \
 make && \
 cp ellipsis3d /usr/local/bin
 
-RUN mv /build/GEOS3104Geodynamics/Exercises /workspace
+RUN mv /build/GEOS3104Geodynamics/Exercises/* /workspace
 
 ENV TINI_VERSION v0.8.4
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin/tini

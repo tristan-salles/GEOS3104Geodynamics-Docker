@@ -33,7 +33,8 @@ make clean && \
 make && \
 cp ellipsis3d /usr/local/bin
 
-RUN mv /build/GEOS3104Geodynamics/Exercises/* /workspace
+WORKDIR /build
+COPY /build/GEOS3104Geodynamics/Exercises/ /workspace
 
 ENV TINI_VERSION v0.8.4
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin/tini

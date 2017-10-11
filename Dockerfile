@@ -27,13 +27,13 @@ RUN mkdir /workspace
 WORKDIR /build
 RUN git clone https://github.com/tristan-salles/GEOS3104Geodynamics.git
 
-RUN cd /build/ellipsis && \
+RUN cd /build/GEOS3104Geodynamics/ellipsis && \
 ./configure CFLAGS='-g -O2 -m32' && \
 make clean && \
 make && \
 cp ellipsis3d /usr/local/bin
 
-COPY /build/Exercises /workspace
+COPY /build/GEOS3104Geodynamics/Exercises /workspace
 
 ENV TINI_VERSION v0.8.4
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin/tini

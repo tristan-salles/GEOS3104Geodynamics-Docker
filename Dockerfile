@@ -21,7 +21,8 @@ RUN pip install scipy
 RUN pip install numpy
 RUN python -m pip install -U matplotlib
 
-RUN mkdir /workspace
+RUN mkdir /workspace && \
+    mkdir /workspace/volume
 
 # launch notebook
 WORKDIR /build
@@ -34,6 +35,9 @@ make && \
 cp ellipsis3d /usr/local/bin
 
 RUN cp -av /build/GEOS3104Geodynamics/Exercises/* /workspace/
+
+# setup space for working in
+VOLUME /workspace/volume
 
 ENV TINI_VERSION v0.8.4
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin/tini
